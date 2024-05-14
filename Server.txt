@@ -4,8 +4,8 @@
 4. Start listening for incoming connections.()
 5. Define a function to handle each client connection.()
 6. Receive the client's username and print a connection message.()
-7. Enter a loop to handle multiple client requests.
-8. Receive the client's request and process it.
-9. Connect to the API endpoint, retrieve data, and send it back to the client.
-10. Save the data to a JSON file.
-11. Send the list of results to the client.
+7. Enter a loop to handle multiple client requests.()
+8. Receive the client's request and process it.()
+9. Connect to the API endpoint, retrieve data, and send it back to the client.()
+10. Save the data to a JSON file.()
+11. Send the list of results to the client.()
