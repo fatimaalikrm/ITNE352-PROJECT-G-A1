@@ -12,9 +12,7 @@ available sources.
 Second Semseter 2023-2024
 
 # Group 
-A1 
-
-**Group Name:** [Creative]  
+**Group Name:** [A1 - Creative]  
 **Course Code:** [ITNE352]  
 **Section:** [1]  
 **Student Name:** [Fatima Ali,Alzahraa Hussain]  
