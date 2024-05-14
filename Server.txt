@@ -1,4 +1,4 @@
-1. Import the necessary modules. ()
+1. Import the necessary modules. (DONE)
 2. Set configuration parameters.()
 3. Create a socket object and bind it to the server host and port.()
 4. Start listening for incoming connections.()
