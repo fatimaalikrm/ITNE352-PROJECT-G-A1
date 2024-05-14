@@ -1,0 +1,7 @@
+1. Import the necessary modules. ()
+2. Set configuration parameters.()
+3. Create a socket object and bind it to the server host and port.()
+4. Start listening for incoming connections.()
+5. Define a function to handle each client connection.()
+6. Receive the client's username and print a connection message.()
+
