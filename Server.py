@@ -140,15 +140,84 @@ def process_request(request, client_username="temp"):
     return {"data":data,"version": "s3"}
 
 #11. Define the functions to search news and sources based on different criteria:
+# Function to search news by keyword
+def search_by_keyword(keyword):
+    url = f'https://newsapi.org/v2/everything?pageSize=15&q={keyword}&apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
 
+# Function to search news by category
+def search_by_category(category):
+    url = f'https://newsapi.org/v2/top-headlines?pageSize=15&category={category}&apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
+
+# Function to search sources by category
+def search_sources_by_category(category):
+    url = f'https://newsapi.org/v2/top-headlines/sources?category={category}&apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
+
+# Function to search news by country
+def search_by_country(country):
+    url = f'https://newsapi.org/v2/top-headlines?pageSize=15&country={country}&apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
+
+# Function to search sources by country
+def search_sources_by_country(country):
+    url = f'https://newsapi.org/v2/top-headlines/sources?country={country}&apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
+
+
+# Function to search sources by language
+def search_sources_by_lan(lan):
+    url = f'https://newsapi.org/v2/top-headlines/sources?language={lan}&apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
 
 
 #12.Define a signal handler function to handle the Ctrl+C signal and shut down the server gracefully.
+# Function to list all headlines
+def list_all_headlines():
+    url = f'https://newsapi.org/v2/top-headlines?pageSize=15&language={LANG}&apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
 
+# Function to list all headlines
+def list_all_sources():
+    url = f'https://newsapi.org/v2/top-headlines/sources?apiKey={YOUR_API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+    return json.dumps(data)
+
+
+# Signal handler for Ctrl+C
+def signal_handler(sig, frame):
+    print('\n[*] Shutting down server...')
+    server_socket.close()
+    sys.exit(0)
+
+# Register the signal handler
+signal.signal(signal.SIGINT, signal_handler)
 
 
 #13.start the main server loop
+while True:
+    # Accept a new connection
+    client_socket, client_address = server_socket.accept()
 
+    # Create a new thread to handle the client
+    client_thread = threading.Thread(target=handle_client, args=(client_socket, client_address))
+    client_thread.start()
 
 
 
