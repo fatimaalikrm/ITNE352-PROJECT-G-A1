@@ -29,11 +29,11 @@ def handle_client(client_socket, client_address):
     print(f"[*] Accepted connection from {client_address}")
 
     try:
-        # Receive the client's username
+#6.Receive the client's username and print a connection message.
         client_username = client_socket.recv(1024).decode()
         print(f"[*] Client '{client_username}' connected.")
 
-        # Main loop to handle client requests
+#7.Enter a loop to handle multiple client requests
         while True:
             # Receive the client's request
             request = client_socket.recv(1024).decode()
@@ -42,11 +42,11 @@ def handle_client(client_socket, client_address):
                 print(f"[*] {client_username} disconnected.")
                 break
 
-            # Process the request and send response
+#8. Receive the client's request and process it
             print("Client Request Request --- "+request.lower())
             response = process_request(request,client_username)
 
-            # Format the response
+# Format the response
             if response["version"] == 1:
                 response = format_headlines_response(response["data"])
 
@@ -68,10 +68,82 @@ def handle_client(client_socket, client_address):
     except Exception as e:
         print(f"Error: {e}")
 
-    # Close the client connection
+# Close the client connection
     client_socket.close()
 
-6.
+    def getSpec(request):
+    #{"version": 2,"choice":BBC News_https://www.facebook.com/bbcnews_Children used as 'guinea pigs' in clinical trials,"param",1.1_bbc
+    print(request)
+    data = request["choice"]
+    details = {"source":data[0],"author":data[1],"title":data[2]}
+    request = {"version": 1,"choice":request['param']}
+    request  = json.dumps(request)
+    print(request)
+    response = process_request(request)
+    response["version"] = 2
+    response["args"] = details
+    return response
+
+def getSpec_s4(request):
+    #{"version": 2,"choice":BBC News_https://www.facebook.com/bbcnews_Children used as 'guinea pigs' in clinical trials,"param",1.1_bbc
+    print("S4 ",request)
+    data = request["choice"]
+    details = {"source":data[0]}
+    request = {"version": "s1","choice":request['param']}
+    request  = json.dumps(request)
+    print(request)
+    response = process_request(request)
+    response["version"] = "s5"
+    response["args"] = details
+    return response
+
+
+# Function to process client requests
+def process_request(request, client_username="temp"):
+    # Split the request into parts
+    request = json.loads(request)
+    
+    # Check the version of the request
+    if request["version"] == 2:
+        return getSpec(request)
+    
+    # Process based on different versions or types of requests
+    if request["version"] == "s4":
+        return getSpec_s4(request)
+    
+    if request["version"] == "s1":
+        return process_sources_request(request, client_username)
+    
+    # Split the choice to determine the category
+    parts = request["choice"].split("_")
+    category = parts[0]
+    data = "not"
+    
+    # Print the received category for debugging purposes
+    print("---Received --- " + category)
+    
+    # Process the request based on the category
+    if category == '1.1':  # Search for keywords
+        keyword = parts[1]
+        data = search_by_keyword(keyword)
+    elif category == '1.2':  # Search by category
+        category = parts[1]
+        data = search_by_category(category)
+    elif category == '1.3':  # Search by country
+        country = parts[1]
+        data = search_by_country(country)
+    elif category == '1.4':  # List all headlines
+        data = list_all_headlines()
+    else:
+        return "Invalid category"
+
+#10. Save the data to a JSON file.
+    if client_username != "temp":
+        filename = f"{GROUP_ID}_{client_username}_{parts[1]}_sources.json"
+        save_to_json(data, filename)
+    return {"data":data,"version": "s3"}
+
+
 
 
 
