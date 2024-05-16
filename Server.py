@@ -147,7 +147,7 @@ def process_request(request, client_username="temp"):
 
 
 
-#13.start the main server loop:
+#13.start the main server loop
 
 
 
