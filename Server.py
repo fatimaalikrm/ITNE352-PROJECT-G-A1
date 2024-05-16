@@ -11,7 +11,6 @@ from utils import *
 YOUR_API_KEY = 'e8a67a4811dc44abbcf6d5f38d1b330b'
 GROUP_ID = "7566"
 LANG = 'en'
-# Define the server's IP address and port
 SERVER_HOST = '0.0.0.0'
 SERVER_PORT = 5050
 
@@ -24,29 +23,27 @@ server_socket.listen(3)
 print(f"[*] Server listening on {SERVER_HOST}:{SERVER_PORT}")
 
 #5. Define a function to handle each client connection.
-# Inside the handle_client function
+#6. Inside the handle_client function
 def handle_client(client_socket, client_address):
     print(f"[*] Accepted connection from {client_address}")
 
     try:
-#6.Receive the client's username and print a connection message.
+#-Receive the client's username and print a connection message.
         client_username = client_socket.recv(1024).decode()
         print(f"[*] Client '{client_username}' connected.")
 
-#7.Enter a loop to handle multiple client requests
+#-Enter a loop to handle multiple client requests
         while True:
             # Receive the client's request
             request = client_socket.recv(1024).decode()
-
+#-If the request is 'quit', print a message indicating the client's disconnection and break the loop.
             if request.lower() == 'quit':
                 print(f"[*] {client_username} disconnected.")
                 break
 
-#8. Receive the client's request and process it
+#-Process the request using the `process_request` function and send the response back to the client.
             print("Client Request Request --- "+request.lower())
             response = process_request(request,client_username)
-
-# Format the response
             if response["version"] == 1:
                 response = format_headlines_response(response["data"])
 
@@ -58,8 +55,6 @@ def handle_client(client_socket, client_address):
 
             elif response["version"] == "s5":
                  response = format_sources_response_two(response)
-
-            
             client_socket.send(response.encode())
 
     except socket.timeout:
@@ -67,10 +62,10 @@ def handle_client(client_socket, client_address):
         client_socket.send("Server timeout: No response within 1 minute.".encode())
     except Exception as e:
         print(f"Error: {e}")
-
-# Close the client connection
+#-Close the client connection
     client_socket.close()
-#8. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
+    
+#7.Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
     def getSpec(request):
     #{"version": 2,"choice":BBC News_https://www.facebook.com/bbcnews_Children used as 'guinea pigs' in clinical trials,"param",1.1_bbc
     print(request)
@@ -84,6 +79,7 @@ def handle_client(client_socket, client_address):
     response["args"] = details
     return response
 
+#8.Define a function `getSpec_s4` to process another specific type of client request (version 's4') and return a response.
 def getSpec_s4(request):
     #{"version": 2,"choice":BBC News_https://www.facebook.com/bbcnews_Children used as 'guinea pigs' in clinical trials,"param",1.1_bbc
     print("S4 ",request)
@@ -98,31 +94,31 @@ def getSpec_s4(request):
     return response
 
 
-# Function to process client requests
+#9.Define the `process_request` function to handle different versions or types of client requests
 def process_request(request, client_username="temp"):
-    # Split the request into parts
+#-Split the request into parts
     request = json.loads(request)
     
-    # Check the version of the request
+#-Check the version of the request and call the appropriate function to process the request.
+#-If the request version is 2, call the `getSpec` function.
     if request["version"] == 2:
         return getSpec(request)
-    
-    # Process based on different versions or types of requests
+#-If the request version is 's4', call the `getSpec_s4` function.
     if request["version"] == "s4":
         return getSpec_s4(request)
-    
+#-If the request version is 's1', call the `process_sources_request` function.
     if request["version"] == "s1":
         return process_sources_request(request, client_username)
     
-    # Split the choice to determine the category
+# Split the choice to determine the category
     parts = request["choice"].split("_")
     category = parts[0]
     data = "not"
     
-    # Print the received category for debugging purposes
+# Print the received category for debugging purposes
     print("---Received --- " + category)
     
-    # Process the request based on the category
+#-If the request version is 1.1, 1.2, 1.3, or 1.4, call the corresponding function to search news by keyword, category, country, or list all headlines, respectively.
     if category == '1.1':  # Search for keywords
         keyword = parts[1]
         data = search_by_keyword(keyword)
@@ -143,16 +139,15 @@ def process_request(request, client_username="temp"):
         save_to_json(data, filename)
     return {"data":data,"version": "s3"}
 
-#11. Send the list of results to the client.
+#11. Define the functions to search news and sources based on different criteria:
 
 
 
-#12. Handle the client's selection of a specific result and send the corresponding details.
+#12.Define a signal handler function to handle the Ctrl+C signal and shut down the server gracefully.
 
 
 
-
-#13. Print relevant information on the server screen.
+#13.tart the main server loop:
 
 
 
