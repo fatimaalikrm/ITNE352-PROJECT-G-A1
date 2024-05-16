@@ -70,7 +70,7 @@ def handle_client(client_socket, client_address):
 
 # Close the client connection
     client_socket.close()
-
+#8. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
     def getSpec(request):
     #{"version": 2,"choice":BBC News_https://www.facebook.com/bbcnews_Children used as 'guinea pigs' in clinical trials,"param",1.1_bbc
     print(request)
