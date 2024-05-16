@@ -8,43 +8,42 @@
 
 5. Define a function to handle each client connection.(DONE)
 
-6. Receive the client's username and print a connection message.(DONE)
 
-7. Inside the `handle_client` function (DONE)
-- Receive the client's username and print a message indicating the client's connection.
-- Enter a main loop to handle client requests:
-- Receive the client's request.
-- If the request is 'quit', print a message indicating the client's disconnection and break the loop.
-- Process the request using the `process_request` function and send the response back to the client.
 
-8. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
+6. Inside the `handle_client` function (DONE)
+- Receive the client's username and print a message indicating the client's connection.(DONE)
+- Enter a main loop to handle client requests:(DONE)
+- Receive the client's request.(DONE)
+- If the request is 'quit', print a message indicating the client's disconnection and break the loop.(DONE)
+- Process the request using the `process_request` function and send the response back to the client.(DONE)
 
-9. Define a function `getSpec_s4` to process another specific type of client request (version 's4') and return a response.
+7. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.(DONE)
 
-10. Define the `process_request` function to handle different versions or types of client requests
-- Split the request into parts.
-    - Check the version of the request and call the appropriate function to process the request.
-- If the request version is 2, call the `getSpec` function.
-- If the request version is 's4', call the `getSpec_s4` function.
-- If the request version is 's1', call the `process_sources_request` function.
-- If the request version is 1.1, 1.2, 1.3, or 1.4, call the corresponding function to search news by keyword, category, country, or list all headlines, respectively.
- - Save the response to a JSON file if the client username is not "temp".
- - Return the processed data with version 1.
+8. Define a function `getSpec_s4` to process another specific type of client request (version 's4') and return a response.(DONE)
 
-11. Define the functions to search news and sources based on different criteria:
-- `search_by_keyword`: Search news by keyword.
-- `search_by_category`: Search news by category.
-- `search_sources_by_category`: Search sources by category.
-- `search_by_country`: Search news by country.
-- `search_sources_by_country`: Search sources by country.
-- `search_sources_by_lan`: Search sources by language.
-- `list_all_headlines`: Get all news headlines.
-- `list_all_sources`: Get all news sources.
+9. Define the `process_request` function to handle different versions or types of client requests(DONE)
+- Split the request into parts.(DONE)
+    - Check the version of the request and call the appropriate function to process the request.(DONE)
+- If the request version is 2, call the `getSpec` function.(DONE)
+- If the request version is 's4', call the `getSpec_s4` function.(DONE)
+- If the request version is 's1', call the `process_sources_request` function.(DONE)
+- If the request version is 1.1, 1.2, 1.3, or 1.4, call the corresponding function to search news by keyword, category, country, or list all headlines, respectively.(DONE)
+ - Save the response to a JSON file if the client username is not "temp".(DONE)
+ - Return the processed data with version 1.(DONE)
 
-12. Define a signal handler function to handle the Ctrl+C signal and shut down the server gracefully.
+10. Define the functions to search news and sources based on different criteria:(DONE)
+- `search_by_keyword`: Search news by keyword.(DONE)
+- `search_by_category`: Search news by category.(DONE)
+- `search_sources_by_category`: Search sources by category.(DONE)
+- `search_by_country`: Search news by country.(DONE)
+- `search_sources_by_country`: Search sources by country.(DONE)
+- `search_sources_by_lan`: Search sources by language.(DONE)
+- `list_all_headlines`: Get all news headlines.(DONE)
+- `list_all_sources`: Get all news sources.(DONE)
 
-14. Start the main server loop:
+11. Define a signal handler function to handle the Ctrl+C signal and shut down the server gracefully.
+
+12. Start the main server loop:
 - Accept a new client connection.
 - Create a new thread to handle the client connection.
 - Start the client thread.
-
