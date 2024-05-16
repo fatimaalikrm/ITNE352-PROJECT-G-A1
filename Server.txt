@@ -4,13 +4,34 @@
 4. Start listening for incoming connections.(DONE)
 5. Define a function to handle each client connection.(DONE)
 6. Receive the client's username and print a connection message.(DONE)
-7. Enter a loop to handle multiple client requests.(DONE)
-8. Receive the client's request and process it.(DONE)
-9. Connect to the API endpoint, retrieve data, and send it back to the client.(DONE)
-10. Save the data to a JSON file.(DONE)
-11. Send the list of results to the client.()
-12. Handle the client's selection of a specific result and send the corresponding details.()
-13. Print relevant information on the server screen.()
-14. Test the server by running it and connecting with multiple clients.()
-15. Handle errors and exceptions.()
-16. Add comments to explain the code.()
+7. Inside the `handle_client` function (DONE)
+8. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
+8. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
+9. Define a function `getSpec_s4` to process another specific type of client request (version 's4') and return a response.
+10. Define the `process_request` function to handle different versions or types of client requests:
+- Split the request into parts.
+    - Check the version of the request and call the appropriate function to process the request.
+- If the request version is 2, call the `getSpec` function.
+- If the request version is 's4', call the `getSpec_s4` function.
+- If the request version is 's1', call the `process_sources_request` function.
+- If the request version is 1.1, 1.2, 1.3, or 1.4, call the corresponding function to search news by keyword, category, country, or list all headlines, respectively.
+ - Save the response to a JSON file if the client username is not "temp".
+ - Return the processed data with version 1.
+
+11. Define the functions to search news and sources based on different criteria:
+- `search_by_keyword`: Search news by keyword.
+- `search_by_category`: Search news by category.
+- `search_sources_by_category`: Search sources by category.
+- `search_by_country`: Search news by country.
+- `search_sources_by_country`: Search sources by country.
+- `search_sources_by_lan`: Search sources by language.
+- `list_all_headlines`: Get all news headlines.
+- `list_all_sources`: Get all news sources.
+
+12. Define a signal handler function to handle the Ctrl+C signal and shut down the server gracefully.
+
+14. Start the main server loop:
+- Accept a new client connection.
+- Create a new thread to handle the client connection.
+- Start the client thread.
+
