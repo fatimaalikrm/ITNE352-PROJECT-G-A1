@@ -152,7 +152,7 @@ def process_request(request, client_username="temp"):
 
 
 
-#14. Test the server by running it and connecting with multiple clients.
+
 
 
 
