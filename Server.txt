@@ -7,7 +7,7 @@
 7. Enter a loop to handle multiple client requests.(DONE)
 8. Receive the client's request and process it.(DONE)
 9. Connect to the API endpoint, retrieve data, and send it back to the client.(DONE)
-10. Save the data to a JSON file.()
+10. Save the data to a JSON file.(DONE)
 11. Send the list of results to the client.()
 12. Handle the client's selection of a specific result and send the corresponding details.()
 13. Print relevant information on the server screen.()
