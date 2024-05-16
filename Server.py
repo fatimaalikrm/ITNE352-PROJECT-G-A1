@@ -143,6 +143,22 @@ def process_request(request, client_username="temp"):
         save_to_json(data, filename)
     return {"data":data,"version": "s3"}
 
+#11. Send the list of results to the client.
+
+
+
+#12. Handle the client's selection of a specific result and send the corresponding details.
+
+
+
+
+#13. Print relevant information on the server screen.
+
+
+
+
+#14. Test the server by running it and connecting with multiple clients.
+
 
 
 
