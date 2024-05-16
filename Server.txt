@@ -1,14 +1,27 @@
 1. Import the necessary modules. (DONE)
+
 2. Set configuration parameters.(DONE)
+
 3. Create a socket object and bind it to the server host and port.(DONE)
+
 4. Start listening for incoming connections.(DONE)
+
 5. Define a function to handle each client connection.(DONE)
+
 6. Receive the client's username and print a connection message.(DONE)
+
 7. Inside the `handle_client` function (DONE)
+- Receive the client's username and print a message indicating the client's connection.
+- Enter a main loop to handle client requests:
+- Receive the client's request.
+- If the request is 'quit', print a message indicating the client's disconnection and break the loop.
+- Process the request using the `process_request` function and send the response back to the client.
+
 8. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
-8. Define a function `getSpec` to process a specific type of client request (version 2) and return a response.
+
 9. Define a function `getSpec_s4` to process another specific type of client request (version 's4') and return a response.
-10. Define the `process_request` function to handle different versions or types of client requests:
+
+10. Define the `process_request` function to handle different versions or types of client requests
 - Split the request into parts.
     - Check the version of the request and call the appropriate function to process the request.
 - If the request version is 2, call the `getSpec` function.
