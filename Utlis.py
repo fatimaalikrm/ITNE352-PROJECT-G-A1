@@ -35,5 +35,24 @@ def format_headlines_response(json_response):
     # Load the JSON response into a dictionary
     json_response = json.loads(json_response)
 
+# Extract information for the list of headlines
+    list_details = []
+    COUNT = 0  # Initialize a counter
+    for article in json_response['articles']:
+        # Create a dictionary to store details of each headline
+        headline_details = {
+            'source_name': article['source']['name'],
+            'author': article['author'] if article['author'] else 'Unknown',
+            'title': article['title']
+        }
+        # Append the headline details to the list
+        list_details.append(headline_details)
+        
+        # Check if the number of extracted headlines has reached the READ_LIMIT
+        if len(list_details) == READ_LIMIT:
+            break  # If reached, exit the loop
+
+
+
 
     
