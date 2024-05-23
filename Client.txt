@@ -16,3 +16,11 @@
    - The `display_list_details()` function takes a list of details (either headlines or sources) and prints them in a formatted way.(Done)
    - The `print_list_details_headlines()` and `print_list_details_sources()` functions are used to display the details of individual 
       headlines or sources, respectively.(Done)
+
+4.Client-Server Communication:(Done)
+   - When the user selects an option, the client creates a JSON-encoded request and sends it to the server.(Done)
+   - The client then receives the server's response and processes the data accordingly.(Done)
+
+5.Main Loop and Cleanup:(Done)
+   - The main loop of the client application continues until the user chooses to quit.(Done)
+   - When the user chooses to quit, the client-side socket is closed, and the application terminates.(Done)
