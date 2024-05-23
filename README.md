@@ -19,6 +19,7 @@ Second Semseter 2023-2024
 **Student ID:** [202108358, 202101299]
 
 ## Table of Contents
+- [Files in This Project](#Files-in-Our-project)
 - [Requirements](#requirements)
 - [How to Run](#how-to-run)
 - [Scripts](#scripts)
@@ -27,8 +28,14 @@ Second Semseter 2023-2024
 - [Conclusion](#conclusion)
 - [Resources](#resources) (optional)
 
-# Requirements
+# Files in Our project
+- Server.txt includes the steps we followed to execute the server.py file.
+- Sever.py includes the server script.
+- Client.txt includes the steps we followed to execute the Client.py file.
+- Client.py includes the client script.
+- Utlis.py
 
+# Requirements
 The project requires the following:
 - `socket`: This module provides access to the BSD socket interface. 
 - `threading`: This module provides classes and functions for multi-threaded programming. 
