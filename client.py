@@ -162,6 +162,98 @@ def print_list_details_sources(details):
         print("Description:", item["description"])
         print("Language:", item["language"])
 
+#4.Client-Server Communication:
+#5.Main Loop and Cleanup:
+
+# Main loop for sending requests
+while True:
+    # Display the main menu
+    display_main_menu()
+
+    # Prompt the user for input
+    choice = input("Enter your choice: ")
+
+    # Check if the client wants to quit
+    if choice == '3':
+        break
+    elif choice == '1':
+        # Display the headlines menu
+        while True:
+            headlines_choice = display_headlines_menu()
+
+            # print(headlines_choice[0]+"--------- this")
+
+            if headlines_choice[1] == "return":
+                break
+
+            # send request
+            request = {"version": 1, "choice": headlines_choice[0]}
+            request_string = json.dumps(request)
+            client_socket.send(request_string.encode())
+
+            # Receive the server's response with timeout
+            response = client_socket.recv(8192).decode()
+            # print(response)
+            json_response = json.loads(response)
+            list_details = json_response['list_details']
+
+            ldata = display_list_details(list_details)
+
+            while True:
+                print("|-- Enter Choice to view More --|")
+                try:
+                    choice = int(input("=> [x to exit]"))
+                    # request = "spec_"+ldata[choice-1]+":"+headlines_choice[0]
+                    request = {"version": 2, "choice": ldata[choice - 1], "param": headlines_choice[0]}
+                    request = json.dumps(request)
+                    client_socket.send(request.encode())
+
+                    # Receive the server's response with timeout
+                    response = client_socket.recv(2048).decode()
+                    print_list_details_headlines(json.loads(response))
+                except ValueError:
+                    break
+
+    elif choice == '2':
+        # Display the headlines menu
+        while True:
+            headlines_choice = display_sources_menu()
+
+            # print(headlines_choice[0]+"--------- this")
+
+            if headlines_choice[1] == "return":
+                break
+
+            # send request
+            request = {"version": "s1", "choice": headlines_choice[0]}
+            request_string = json.dumps(request)
+            client_socket.send(request_string.encode())
+
+            # Receive the server's response with timeout
+            response = client_socket.recv(8192).decode()
+            # print(response)
+            json_response = json.loads(response)
+            list_details = json_response['list_details']
+
+            ldata = display_list_details(list_details)
+
+            while True:
+                print("|-- Enter Choice to view More --|")
+                try:
+                    choice = int(input("=> [x to exit]"))
+                    # request = "spec_"+ldata[choice-1]+":"+headlines_choice[0]
+                    request = {"version": "s4", "choice": ldata[choice - 1], "param": headlines_choice[0]}
+                    request = json.dumps(request)
+                    client_socket.send(request.encode())
+
+                    # Receive the server's response with timeout
+                    response = client_socket.recv(2048).decode()
+                    print_list_details_sources(json.loads(response))
+                except ValueError:
+                    break
+
+# Close the connection
+client_socket.close()
 
 
 
