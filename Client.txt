@@ -5,4 +5,9 @@
    - connects the client to the server.(Done)
    - prompts the user to enter a username and sends it to the server(Done)
 
-2.Main Menu and Navigation:
+2.Main Menu and Navigation:(Done)
+   - defines three main functions: `display_main_menu()`, `display_headlines_menu()`, and `display_sources_menu()`.(Done)
+   - The `display_main_menu()` function presents the user with three options: search headlines, list of sources, and quit.(Done)
+   - The `display_headlines_menu()` and `display_sources_menu()` functions provide various search and display options for headlines and 
+   sources, respectively.(Done)
+   - The user's choices are processed, and the appropriate requests are sent to the server.(Done)
