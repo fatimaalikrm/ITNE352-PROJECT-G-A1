@@ -63,6 +63,18 @@ The project utilizes multi-threading to handle multiple client connections concu
 Our indebtedness to News API as indispensable when it comes to how efficiently they have instructed us their API could be fully employed. The expansive guidebooks and tutorials they have put together would be said to form a basis for the origin of this project. It would be a lie not to acknowledge that deploying functionalities integrated in this system would have been a slightly harder task were it not for their clear and precise documentation
 
 
+# Conclusion
+
+To summarize, our team has certainly learned a lot from this project which has been a very valuable experience for us. In conclusion, we have practically experienced the use of network communication, multitasking threads and external APIs while developing client-server system that retrieves news headlines and their sources through the News API.
+
+This project is significant because it can help users reach the latest information of news from different sources and categories in an easier way. This system makes it possible for you to know what is happening in the world by your own means by simply searching for headlines or sources using key words, categories, countries or languages.
+
+
+# Resources
+- [News API Documentation](https://newsapi.org/v2/top-headlines): Official documentation for the News API, providing comprehensive guides and tutorials on how to effectively use their API.
+
+
+
 
 
 
