@@ -162,7 +162,53 @@ def format_sources_response_two(json_response):
     # Return the JSON string
     return json_string
 
-
+def format_headlines_response_two(response):
+    """
+    Format the JSON response from the News API to match the required response type.
+    
+    Args:
+    response (dict): The JSON response from the News API.
+    
+    Returns:
+    dict: A dictionary containing the formatted response for both the list of headlines
+          and the details of a selected headline.
+    """
+    print("---| format_headlines_response_two(response) preprocessing")
+    
+    # Convert data to JSON
+    json_response = response["data"]
+    json_response = json.loads(json_response)
+    
+    # Extract parameters from the response
+    params = response["args"]
+    
+    # Initialize an empty dictionary to hold the formatted response
+    formatted_response = {}
+    
+    # Extract information for the list of headlines
+    list_details = []
+    print(params)
+    for article in json_response['articles']:
+        #print(article)
+        # Check if the article's source, author, and title match the specified parameters
+        if article['source']['name'] == params['source'] and article['author'] == params['author'] and article['title'] == params['title']:
+            # Extract and format the publish date and time
+            published_at = article['publishedAt']
+            published_at_datetime = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
+            pub_date = published_at_datetime.date()
+            pub_date_str = pub_date.isoformat()
+            pub_time = published_at_datetime.time()
+            
+            # Create a dictionary to store details of the matching headline
+            headline_details = {
+                'source_name': article['source']['name'],
+                'author': article['author'] if article['author'] else 'Unknown',
+                'title': article['title'],
+                'url': article['url'],
+                'description': article['description'],
+                'publish_date': pub_date_str,
+                'publish_time': pub_time.strftime("%H:%M:%S")
+            }
 
 
 
