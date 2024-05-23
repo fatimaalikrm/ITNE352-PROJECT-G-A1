@@ -92,6 +92,52 @@ def format_sources_response(json_response):
         # Append the source details to the list
         list_details.append(source_details)
 
+  # Check if the number of extracted sources has reached the READ_LIMIT
+        if len(list_details) == READ_LIMIT:
+            break  # If reached, exit the loop
+        
+    # Add the list of details to the formatted response dictionary
+    formatted_response['list_details'] = list_details
+    
+    # Convert the formatted response dictionary to a JSON string
+    json_string = json.dumps(formatted_response)
+    
+    # Return the JSON string
+    return json_string
+
+
+def format_sources_response_two(json_response):
+    """
+    Format the JSON response from the News API to match the required response type.
+    
+    Args:
+    json_response (dict): The JSON response from the News API.
+    
+    Returns:
+    dict: A dictionary containing the formatted response for both the list of headlines
+          and the details of a selected headline.
+    """
+    # Initialize an empty dictionary to hold the formatted response
+    formatted_response = {}
+    
+    # Print a preprocessing message
+    print("---| format_sources_response_two(json_response) preprocessing")
+    
+    # Extract parameters from the JSON response
+    params = json_response["args"]
+    
+    # Load the JSON response into a dictionary
+    json_response = json.loads(json_response["data"])
+    
+    # Extract information for the list of headlines
+    list_details = []
+    COUNT = 0  # Initialize a counter
+    print("format_sources_response_two ", params)
+    for source in json_response['sources']:
+        # Check if the source name matches the specified source in the parameters
+        if params["source"] == source['name']:
+            # Create a dictionary to store details of the matching source
+
 
 
 
