@@ -1,0 +1,23 @@
+1. The script imports the necessary modules: `socket` for network communication and `json` for handling JSON data.
+
+2. It defines the server's IP address and port number.
+
+3. A TCP socket is created, and a timeout of 60 seconds is set for socket operations.
+
+4. The client connects to the server.
+
+5. The client prompts the user to enter a username, which is then sent to the server.
+
+6. The script defines several functions:
+   - `display_main_menu()`: Displays the main menu options.
+   - `display_headlines_menu()`: Displays the headlines menu options and prompts the user for input.
+   - `display_sources_menu()`: Displays the sources menu options and prompts the user for input.
+   - `display_list_details(list_details)`: Displays a list of details (e.g., source name, author, title) for a given list of items.
+   - `get_input(msg)`: Prompts the user for input based on a given message.
+   - `print_list_details_headlines(details)`: Prints the details of each item in a list of headlines.
+   - `print_list_details_sources(details)`: Prints the details of each item in a list of sources.
+
+7. The main loop of the script displays the main menu and handles user input:
+   - If the user chooses option 1 (search headlines), the script enters a sub-loop that displays the headlines menu, prompts the user for input, sends a request to the server, and displays the results.
+   - If the user chooses option 2 (list of sources), the script enters a sub-loop that displays the sources menu, prompts the user for input, sends a request to the server, and displays the results.
+   - If the user chooses option 3 (quit), the script breaks out of the main loop and closes the connection to the server.
