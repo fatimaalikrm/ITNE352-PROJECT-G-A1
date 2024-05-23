@@ -41,9 +41,9 @@
 - `list_all_headlines`: Get all news headlines.(DONE)
 - `list_all_sources`: Get all news sources.(DONE)
 
-12. Define a signal handler function to handle the Ctrl+C signal and shut down the server gracefully.
+12. Define a signal handler function to handle the Ctrl+C signal and shut down the server gracefully.(DONE)
 
-13. Start the main server loop:
-- Accept a new client connection.
-- Create a new thread to handle the client connection.
-- Start the client thread.
+13. Start the main server loop (DONE)
+- Accept a new client connection.(DONE)
+- Create a new thread to handle the client connection.(DONE)
+- Start the client thread.(DONE)
