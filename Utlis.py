@@ -138,6 +138,32 @@ def format_sources_response_two(json_response):
         if params["source"] == source['name']:
             # Create a dictionary to store details of the matching source
 
+              source_details = {
+                'source_name': source['name'],
+                'country': source['country'],
+                'description': source['description'],
+                'URL': source['url'],
+                'language': source['language'],
+                'category': source['category']
+            }
+            # Append the source details to the list
+            list_details.append(source_details)
+        
+        # Check if the number of extracted sources has reached the READ_LIMIT
+        if len(list_details) == READ_LIMIT:
+            break  # If reached, exit the loop
+    
+    # Add the list of details to the formatted response dictionary
+    formatted_response['list_details'] = list_details
+    
+    # Convert the formatted response dictionary to a JSON string
+    json_string = json.dumps(formatted_response)
+    
+    # Return the JSON string
+    return json_string
+
+
+
 
 
 
