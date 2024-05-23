@@ -96,4 +96,73 @@ def display_sources_menu():
 
     return ["2." + user_choice + "_" + word_search, word_search]
 
+#3.Displaying Results:
+#The `display_list_details()` function takes a list of details (either headlines or sources) and prints them in a formatted way.
+def display_list_details(list_details):
+    """
+    Display each item in the list of details.
+    Args:
+    list_details (list): A list of dictionaries containing details.
+    """
+    list_data = []
+    count = 1
+    for item in list_details:
+        print("#" + str(count), end="|")
+        print("Source Name:", item.get("source_name"), end=" ")
+        print("Author:", item.get("author"), end=" ")
+        print("Title:", item.get("title"), end="\n")
+        print("-" * 50)  # Separating each item
+        count += 1
+        list_data.append([item.get("source_name"), item.get("author"), item.get("title")])
+
+    return list_data
+
+def get_input(msg):
+    print("---- Search By " + msg)
+    search_word = input("-->")
+    return search_word
+
+#The `print_list_details_headlines()` and `print_list_details_sources()` functions are used to display the details of individual headlines or sources, respectively.
+def print_list_details_headlines(details):
+    # print(details)
+    """
+    Print the details of each item in the list of details.
+    Args:
+    details (dict): A dictionary containing a list of details.
+    Returns:
+    None
+    """
+    # Iterate over the list of details
+    for item in details["list_details"]:
+        # Print each detail of the item
+        print("Source Name:", item["source_name"])
+        print("Author:", item["author"] if item["author"] else "None")
+        print("Title:", item["title"])
+        print("URL:", item["url"])
+        print("Description:", item["description"])
+        print("Publish Date:", item["publish_date"])
+        print("Publish Time:", item["publish_time"])
+
+
+def print_list_details_sources(details):
+    # print(details)
+    """
+    Print the details of each item in the list of details.
+    Args:
+    details (dict): A dictionary containing a list of details.
+    Returns:
+    None
+    """
+    # Iterate over the list of details
+    for item in details["list_details"]:
+        # Print each detail of the item
+        print("Source Name:", item["source_name"])
+        print("country:", item["country"])
+        print("Category:", item["category"])
+        print("URL:", item["URL"])
+        print("Description:", item["description"])
+        print("Language:", item["language"])
+
+
+
 
