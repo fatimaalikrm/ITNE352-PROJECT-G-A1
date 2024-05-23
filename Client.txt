@@ -1,25 +1,8 @@
-1. Imports and Initializations:
-   - The code imports the `socket` and `json` modules.
-   - It defines the server's IP address and port.
-   - It creates a TCP socket and sets a timeout for socket operations (1 minute).
-   - It connects the client to the server.
-   - It prompts the user to enter a username and sends it to the server.
+1.Imports and Initializations: (Done)
+   - imports the `socket` and `json` modules.(Done)
+   - defines the server's IP address and port.(Done)
+   - creates a TCP socket and sets a timeout for socket operations (1 minute(Done)
+   - connects the client to the server.(Done)
+   - prompts the user to enter a username and sends it to the server(Done)
 
-2. Main Menu and Navigation:
-   - The code defines three main functions: `display_main_menu()`, `display_headlines_menu()`, and `display_sources_menu()`.
-   - The `display_main_menu()` function presents the user with three options: search headlines, list of sources, and quit.
-   - The `display_headlines_menu()` and `display_sources_menu()` functions provide various search and display options for headlines and sources, respectively.
-   - The user's choices are processed, and the appropriate requests are sent to the server.
-
-3. Displaying Results:
-   - The `display_list_details()` function takes a list of details (either headlines or sources) and prints them in a formatted way.
-   - The `print_list_details_headlines()` and `print_list_details_sources()` functions are used to display the details of individual headlines or sources, respectively.
-
-4. Client-Server Communication:
-   - When the user selects an option, the client creates a JSON-encoded request and sends it to the server.
-   - The client then receives the server's response and processes the data accordingly.
-
-5. Main Loop and Cleanup:
-   - The main loop of the client application continues until the user chooses to quit.
-   - When the user chooses to quit, the client-side socket is closed, and the application terminates.
-.
+2.Main Menu and Navigation:
