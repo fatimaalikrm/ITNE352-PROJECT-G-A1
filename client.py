@@ -21,14 +21,13 @@ client_socket.send(username.encode())
 #2.Main Menu and Navigation:
 #defines three main functions: `display_main_menu()`, `display_headlines_menu()`, and `display_sources_menu()`.
 #The `display_main_menu()` function presents the user with three options: search headlines, list of sources, and quit.
-#The `display_headlines_menu()` and `display_sources_menu()` functions provide various search and display options for headlines and sources, respectively.
 def display_main_menu():
     print("Main Menu:")
     print("1. Search headlines")
     print("2. List of Sources")
     print("3. Quit")
 
-
+#The `display_headlines_menu()` and `display_sources_menu()` functions provide various search and display options for headlines and sources, respectively.
 # Function to display the headlines menu
 def display_headlines_menu():
     print("Headlines Menu:")
