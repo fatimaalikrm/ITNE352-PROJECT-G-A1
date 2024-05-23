@@ -52,6 +52,15 @@ def format_headlines_response(json_response):
         if len(list_details) == READ_LIMIT:
             break  # If reached, exit the loop
 
+  # Add the list of details to the formatted response dictionary
+    formatted_response['list_details'] = list_details
+    
+    # Convert the formatted response dictionary to a JSON string
+    json_string = json.dumps(formatted_response)
+    
+    # Return the JSON string
+    return json_string
+
 
 
 
