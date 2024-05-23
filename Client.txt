@@ -9,5 +9,10 @@
    - defines three main functions: `display_main_menu()`, `display_headlines_menu()`, and `display_sources_menu()`.(Done)
    - The `display_main_menu()` function presents the user with three options: search headlines, list of sources, and quit.(Done)
    - The `display_headlines_menu()` and `display_sources_menu()` functions provide various search and display options for headlines and 
-   sources, respectively.(Done)
+     sources, respectively.(Done)
    - The user's choices are processed, and the appropriate requests are sent to the server.(Done)
+
+3.Displaying Results:(Done)
+   - The `display_list_details()` function takes a list of details (either headlines or sources) and prints them in a formatted way.(Done)
+   - The `print_list_details_headlines()` and `print_list_details_sources()` functions are used to display the details of individual 
+      headlines or sources, respectively.(Done)
